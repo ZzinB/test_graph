@@ -62,8 +62,8 @@ def load_data():
 
 df = load_data()
 
-st.title("나의 현재 위치")
-st.write("수강생 전체 점수에서 본인의 위치를 확인하세요!")
+st.title("나의 파이썬 성취도")
+st.write("수강생 전체 점수에서 본인의 파이썬 위치를 확인하세요!")
 
 target_name = st.text_input("본인의 전체 이름을 입력하세요 (예: 김오즈)")
 
