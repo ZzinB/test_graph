@@ -61,10 +61,10 @@ def load_data():
     return df.reset_index(drop=True)
 
 def get_quantile(score):
-    if score <= q1: return '하위 25'
-    elif score <= q2 : return '25~50'
-    elif score <= q3 : return '50~75'
-    else : return '상위 25'
+    if score <= q1: return '하위 25%'
+    elif score <= q2 : return '25~50%'
+    elif score <= q3 : return '50~75%'
+    else : return '상위 25%'
 
 df = load_data()
 
@@ -74,7 +74,7 @@ st.write("수강생 전체 점수에서 본인의 파이썬 위치를 확인하�
 target_name = st.text_input("본인의 전체 이름을 입력하세요 (예: 김오즈)")
 
 if target_name:
-    user_row = df[df['Full Name'].str.contains(target_name, case=False)]
+    user_row = df[df['Full Name'].str.strip().str.lower() == target_name.strip().lower()]
 
     if user_row.empty:
         st.warning("입력한 이름을 찾을 수 없습니다.")
@@ -90,7 +90,7 @@ if target_name:
 
         user_quartile = get_quantile(user_score)
 
-        st.success(f"{target_name}님의 점수는 **{user_score}점**이며, **{user_quartile}%**에 있습니다.")
+        st.success(f"{target_name}님의 점수는 **{user_score} 점**이며, **[{user_quartile}] 구간**에 있습니다.")
         st.info(f"전체 수강생 평균 점수는 **{average_score}점**입니다.\n\n")
 
         # Plotly 히스토그램 생성
