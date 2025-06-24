@@ -90,8 +90,8 @@ if target_name:
 
         user_quartile = get_quantile(user_score)
 
-        st.success(f"{target_name}님의 점수는 **{user_score}점**이며, **[{user_quartile}]**입니다.")
-        st.info(f"전체 평균 점수는 **{average_score}점**입니다.\n\n")
+        st.success(f"{target_name}님의 점수는 **{user_score}점**이며, **{user_quartile}**입니다.")
+        st.info(f"전체 수강생 평균 점수는 **{average_score}점**입니다.\n\n")
 
         # Plotly 히스토그램 생성
         fig = px.histogram(df, x='Score', nbins=10, opacity=0.5,
