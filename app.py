@@ -61,10 +61,10 @@ def load_data():
     return df.reset_index(drop=True)
 
 def get_quantile(score):
-    if score <= q1: return '하위 25% 입니다.'
-    elif score <= q2 : return '25~50% 입니다.'
-    elif score <= q3 : return '50~75% 입니다.'
-    else : return '상위 25% 입니다.'
+    if score <= q1: return '하위 25'
+    elif score <= q2 : return '25~50'
+    elif score <= q3 : return '50~75'
+    else : return '상위 25'
 
 df = load_data()
 
@@ -90,7 +90,7 @@ if target_name:
 
         user_quartile = get_quantile(user_score)
 
-        st.success(f"{target_name}님의 점수는 **{user_score}점**이며, **{user_quartile}**입니다.")
+        st.success(f"{target_name}님의 점수는 **{user_score}점**이며, **{user_quartile}%**에 있습니다.")
         st.info(f"전체 수강생 평균 점수는 **{average_score}점**입니다.\n\n")
 
         # Plotly 히스토그램 생성
